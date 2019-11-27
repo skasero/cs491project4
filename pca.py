@@ -19,12 +19,12 @@ def project_data(Z, PCS, L, k, var):
     index = -1 # Used b/c I increment in the while loop at the begin
     if(var != 0):
         total_sum = np.sum(L)
-        pca_array = []
+        pca_array = 0
         curr_var = 0
         while(curr_var < var):
             index +=1
-            pca_array.append(L[index])
-            curr_var = np.sum(pca_array) / total_sum
+            pca_array += L[index]
+            curr_var = pca_array / total_sum
     else:
         index = k-1 # Subtract 1 b/c I +1 in the statement below. This is just used b/c if
                     # k was original set to 2, and the matrix only had 2 dimensions, this would decrease it
