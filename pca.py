@@ -16,4 +16,13 @@ def find_pcs(COV):
     return np.linalg.eig(COV)
 
 def project_data(Z, PCS, L, k, var):
-    pass
+    # count = 0
+    if(var != 0):
+        pass
+        # while cur_variance < var
+        # calculate new variable with +1 eigenvalue 
+        # count++ on how many eigenvectors to use
+    #else
+        # count = k
+
+    #matmul the Z with how many K to use
