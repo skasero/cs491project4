@@ -1,5 +1,13 @@
 import pca
+import compress
 import numpy as np
+
+img = compress.load_data('Data/Train/')
+compress.compress_images(img,100)
+
+
+
+exit()
 
 
 #X = np.array([[-1,-1],[-1,1],[1,-1],[1,1]])
