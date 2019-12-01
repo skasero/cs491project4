@@ -13,7 +13,11 @@ def compute_covariance_matrix(Z):
     return np.matmul(Z.T,Z)
 
 def find_pcs(COV):
-    return np.linalg.eig(COV)
+    L, PCS = np.linalg.eig(COV)
+    PCS = np.array([x for _,x in sorted(zip(L,PCS.T),reverse=True)]).T  # This is need for sorting based on L
+                                                                        # The transpose is to aligh back the matrix after the sort
+    L = sorted(L,reverse=True)
+    return L,PCS
 
 def project_data(Z, PCS, L, k, var):
     index = -1 # Used b/c I increment in the while loop at the begin
@@ -31,5 +35,4 @@ def project_data(Z, PCS, L, k, var):
                     # to 1, but then 1+1 for the statement below. 
 
     PCS = PCS[:,:index+1] # Used to keep the first index+1 columns of PCS
-
-    return np.matmul(Z,PCS)
+    return np.dot(Z,PCS)
