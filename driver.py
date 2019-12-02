@@ -3,8 +3,8 @@ import compress
 import numpy as np
 
 img = compress.load_data('Data/Train/')
-X_compressed = compress.compress_images(img,100)
-#compress.save_data(X_compressed)
+X_compressed = compress.compress_images(img,2000)
+compress.save_data(X_compressed)
 
 exit()
 
