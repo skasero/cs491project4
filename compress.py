@@ -20,12 +20,13 @@ def load_data(input_dir):
         output_array.append(tmp_array.flatten())
     return np.array(output_array).T
 
-def save_data(X_compressed, output_dir = 'Data/Output/'):
+def save_data(X_compressed, output_dir = 'Output/'):
     count = 0
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     for images in X_compressed.T:
-        images *= 255.0/images.max()
+        images -= images.min()
+        images *= 255.0/(images.max()-images.min())
         plt.imsave(output_dir + 'output_' + str(count) + '.png',np.reshape(images,(-1,48)),cmap='gray')
         count +=1
 
